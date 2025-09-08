@@ -1,0 +1,40 @@
+# coding=utf-8
+timezone: Asia/Shanghai
+
+# Site settings
+email: howard@howardzhao.com
+baseurl: ""
+paginate: 25
+paginate_path: "/p:num/"
+cdnlink: ""
+# cdnlink: "https://cdn.zhaohao.online"
+
+# SEO settings
+title: Howard ZHao's Notes ☁
+description: Notes of Howard Zhao.
+twitter_username: zhaohao
+disqus_username: zhaohao
+comments: true
+# Build settings
+template: notecss
+#template: notepaper
+include: ["_categories"]
+exclude: ["Gemfile.lock", "README.md", "LICENSE.txt"]
+markdown: kramdown
+highlighter: rouge
+permalink: /:year:month:day-:title.html
+
+# Sass
+sass:
+  style: compressed
+
+# html minify
+compress_html:
+  clippings: all
+  comments: all
+  endings: []
+  startings: [html, head, body]
+  profile: false
+
+# Gems
+plugins: [jekyll-paginate, jekyll-sitemap]
