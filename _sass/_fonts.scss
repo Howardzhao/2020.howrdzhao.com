@@ -1,0 +1,38 @@
+/**
+@font-face {
+    font-family: 'Century Gothic';
+    src:url("/assets/Fonts/GOTHIC.TTF") format('truetype');
+}
+*/
+@font-face {
+    font-family: 'DSM';
+    src:url("/assets/Fonts/DSM.TTF") format('truetype');
+}
+
+@font-face {
+  font-family: 'Galdeano';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Galdeano Regular'), local('Galdeano-Regular'), url("/assets/Fonts/Galdeano.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'Electrolize';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Electrolize'), local('Electrolize-Regular'), url("/assets/Fonts/Electrolize.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'Cuprum';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cuprum'), local('Cuprum-Regular'), url("/assets/Fonts/Cuprum.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'Codystar';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Codystar'), url("/assets/Fonts/Codystar.woff") format('woff');
+}

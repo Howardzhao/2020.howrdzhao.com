@@ -1,16 +1,12 @@
 ---
+layout: post
 title: 大手握小手
-subtitle: null
+subtitle: 
+date: 2017-01-04 21:30:00 +0800
 categories:
-- Weblog
-tags:
-- Zoe
-- Ning
-description: Diary of zhao
-image: /media/images/2017-01-04-hands-in-hands.jpg
-comments: true
-date: 2017-01-04T21:30:01Z
+  - Weblog
+description: 
+image: /Media/2017-01-04-hands-in-hands.jpg
 ---
-
-![Big hands holding small hands](/netlink/media/images/2017-01-04-hands-in-hands.jpg) 
+![Big hands holding small hands]({{site.cdnlink}}/Media/2017-01-04-hands-in-hands.jpg) 
 大手握小手

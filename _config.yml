@@ -1,28 +1,38 @@
 # coding=utf-8
 timezone: Asia/Shanghai
-
 # Site settings
-email: howard@howardzhao.com
+email: zhao@zhao.stream
 baseurl: ""
-paginate: 25
-paginate_path: "/p:num/"
-cdnlink: ""
-# cdnlink: "https://cdn.zhaohao.online"
+paginate: 10
+paginate_path: "/pages/page-:num/"
+# google_analytics: UA-25085903-1
+defaultpostimg: /assets/img/img-default-01.jpg
+defaultpostimg-s: /assets/img/img-default-01.jpg
+# cdnlink: "https://cloud.zhao.im"
+# cdnlink: "https://zhao.stream"
 
 # SEO settings
-title: Howard ZHao's Notes ☁
-description: Notes of Howard Zhao.
+title: ZHAO'S WEBLOG ☁
+description: 原来你也在这里……
 twitter_username: zhaohao
 disqus_username: zhaohao
-comments: true
+
+# Profile settings
+name: 灏若星尘
+profile_img: /assets/img/profile.jpg
+profile: 仅仅为了记录，记下消逝和即将消逝的点点滴滴，在回首的时候，能够知道，我曾经来过…… 看未来 一步步来了~~~
+social:
+  twitter: https://twitter.com/zhaohao
+  telegram: https://telegram.me/zhaohao
+  facebook: https://facebook.com/haozhao
+  instagram: https://www.instagram.com/hao.zhao/
+
 # Build settings
-template: notecss
-#template: notepaper
 include: ["_categories"]
 exclude: ["Gemfile.lock", "README.md", "LICENSE.txt"]
 markdown: kramdown
 highlighter: rouge
-permalink: /:year:month:day-:title.html
+permalink: /posts/:title.html
 
 # Sass
 sass:

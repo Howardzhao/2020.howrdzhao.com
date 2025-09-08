@@ -1,47 +1,66 @@
 ---
-title: 原来你也在这里 
 layout: default
-permalink: 
 ---
-<a href="/"  style="font-weight:bold;"><i class="fa fa-connectdevelop fa-spin fa-fw"></i> {{site.title}} ( {{ paginator.total_posts }} posts )</a>
-<nav class="post-home-link">
-  <a href="/"  style="font-weight:bold;"> <i class="fa fa-home" aria-hidden="true"></i>  HOME </a>
-  <span>&nbsp;</span>
-  <a href="https://zlog.net" target="_blank"  style="font-weight:bold;"> <i class="fa fa-tencent-weibo fa-fw" aria-hidden="true"></i></a>
-  <span>&nbsp;</span>
-  <a href="{{ site.baseurl }}/feed.xml"><i class="fa fa-rss fa-fw" aria-hidden="true"></i></a>
-</nav>
-<div>　　　　</div>
-<div class="qricon"><i class="fa fa-qrcode fa-2x" aria-hidden="true"></i></div>
-<div class="hide" id="qrcode" style="box-shadow: inset #287a7b 0px 0px 6px 6px; float: right; padding: 10px; margin:10px 0px 10px 10px;" ></div>
-{% for post in paginator.posts %}
-  {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
-  {% if year != y %}
-    {% assign year = y %}
-    <div><li class="listing-seperator">{{ y }}</li></div>
-  {% endif %}
+<section class="previews">
   <div>
-  <li class="listing-item">
-    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }} - {{ post.date | date: "%A" }}</a>
-  </li>
+    {% for post in paginator.posts %}
+      <figure class="absolute-bg preview__img" style="background-image: url('{{site.cdnlink}}/assets/img/howardzhao-overlay-05.png'),url('{% if post.image %}{{site.cdnlink}}{{ post.image }}{% else %}{{ site.defaultpostimg }}{% endif %}');background-repeat: repeat,no-repeat;background-size: auto,cover;"></figure>   
+    {% endfor %}
+    <div class="previews__container">
+      <span>Welcome to</span>
+      <h1>{{ site.title }}</h1>
+      <span>仅仅为了记录，记下消逝和即将消逝的点点滴滴，在回首的时候，能够知道，我曾经来过……</span>
+    </div>
   </div>
-{% endfor %}
-<div>　　　　</div>
-<div id="post-pagination" class="paginator">
+
+  <div>
+    <header>
+      <ul class="tabs">
+        <li class="tabs__item">Posts</li>
+        <li class="tabs__item">categories</li>
+        <li class="tabs__item">About</li>
+      </ul>
+    </header>
+
+    <div class="tab">
+      <ul itemscope itemtype="http://schema.org/Blog">
+        {% for post in paginator.posts %}
+          <li class="preview" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+            <a class="preview__link" href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+              <span class="preview__date" itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</span>
+              <h2 class="preview__header" itemprop="name">{{ post.title }}</h2>
+              <p class="preview__excerpt" itemprop="description">{{ post.content | strip_html | truncate: 90 }}</p>
+              <span class="preview__more">Read More</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      
  {% if paginator.total_pages > 1 %}
+        <div class="pagination">
+
     {% if paginator.page == 1 %}
       <span class="current-page">1</span>
       {% else %}
-      <span class="list-page"><a href="/">1</a></span>
+      <a href="/">1</a>
     {% endif %}
+
     {% for count in (2..paginator.total_pages) %}
       {% if count == paginator.page %}
       <span class="current-page">{{count}}</span>
       {% else %}
-      <span class="list-page"><a href="/p{{count}}/">{{count}}</a></span>
+      <a href="/pages/page-{{count}}/index.html">{{count}}</a>
       {% endif %}
     {% endfor %}
-  {% endif %}
-</div>
 
+  {% endif %}
+ 
+</div>
+      {% include archive-link.html %}
+    </div>
+    {% include categories-tab.html %}
+    {% include about-tab.html %}
+
+  </div>
+
+</section>

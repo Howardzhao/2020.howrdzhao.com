@@ -1,60 +1,60 @@
 ---
 layout: default
 ---
-<nav class="post-home-link">
-  <a href="/"  style="font-weight:bold;"> <i class="fa fa-home" aria-hidden="true"></i>  HOME </a>
-  <span>&nbsp;</span>
-  <a href="https://zlog.net" target="_blank"  style="font-weight:bold;"> <i class="fa fa-tencent-weibo fa-fw" aria-hidden="true"></i></a>
-  <span>&nbsp;</span>
-  <a href="{{ site.baseurl }}/feed.xml"><i class="fa fa-rss fa-fw" aria-hidden="true"></i></a>
-</nav>
-<button id="backbutton"  onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go back </button>
-{% if page.next.url %}
-<div class="post-next-link">
-  <a href="{{page.next.url | prepend: site.baseurl }}">
-    <span>▲ Newer Post  : {{page.next.title}} [J/←]</span>
-  </a>   
-</div>
-{% endif %}
-<div class="post-content">
-<div id='tag_cloud'><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" style="font-family: 'Courier New', Courier, monospace;">{{ page.date | date: "%A, %B %-d | Week %W & Day %j of Year %Y" }}</time></div>
-<h2>{{ page.title }}</h2>  
-<div style="margin: -1em 0 0 0;float: right;">
-  {% if page.categories %}
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    {% for cat in page.categories %}
-    <a href="/categories/index.html#{{ cat }}" title="{{ cat }}">{{ cat }}</a>&nbsp;
-    {% endfor %}
-  {% endif %}
-  {% if page.tags %}
-  <i class="fa fa-hashtag" aria-hidden="true"></i> 
-    {% for tag in page.tags %}
-    <a href="/tags/index.html#{{ tag }}" title="{{ tag }}">{{ tag }}</a>&nbsp;
-    {% endfor %}
-  {% endif %}
-</div> 
-{{ content }}
-</div>
-<table border="0">
-<tr>
-  <td style="border-top: #008090 .5em solid;">
-  <div id="qrcode" style="box-shadow: inset #287a7b 0px 0px 6px 6px; float: left; padding: 10px; margin:10px 10px 10px 0;" ></div>
-  </td>
-  <td style="border-top: #9e3636 .5em solid;">
-    <span class="">Update Time: 【 {{page.date | date:"%Y-%m-%d %H:%M:%S %Z"}} 】</span>
-    <br>
-    <span class="">Permanent Link: <a href="{{ site.url }}{{ page.url }}">【 {{ page.url | remove: "/"}} 】</a></span>
-  </td>
-</tr>
-</table>
-{% if site.comments %}
-{% include comments.html %}
-{% endif %}
+<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="section-padding--lg mast">
+    <a class="nav nav--white" href="{{ site.baseurl }}/index.html">
+      <i class="fa fa-lg fa-arrow-left"></i>
+      <span>Back to Posts</span>
+    </a>
+    <figure class="absolute-bg mast__img" style="background-image: url({{site.cdnlink}}/assets/img/howardzhao-overlay-05.png),url('{% if page.image %}{{site.cdnlink}}{{ page.image }}{% else %}{{site.cdnlink}}{{ site.defaultpostimg }}{% endif %}');background-repeat: repeat,no-repeat;background-size: auto,cover;"></figure>
+    <div class="mast__container">
+      <span><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time></span>
+      <h1 itemprop="name headline">{{ page.title }}</h1>
+      {% if page.categories.size > 0 %}
+        <span>
+          Posted in {{ page.categories | join: ', ' }}
+        </span>
+      {% endif %}
+      <span></span>
+    </div>
+  </header>
+
+  <section class="section-padding post" itemprop="articleBody">
+    {{ content }}
+  </section>
+
+  <section class="profile">
+    <div class="profile__card">
+      <div class="profile__img">
+        <figure class="absolute-bg" style="background-image: url('{{site.cdnlink}}{{ site.profile_img }}');"></figure>
+      </div>
+      <div class="profile__container">
+        <p>{{ site.profile }}</p>
+        {% if site.email or site.social %}
+          <ul class="profile__social">
+            {% if site.email %}
+              <li><a class="fa fa-lg fa-envelope-o" href="mailto:{{ site.email }}"></a></li>
+            {% endif %}
+            {% for social in site.social %}
+              <li><a class="fa fa-lg fa-{{ social[0] }}" href="{{ social[1] }}" target="_blank"></a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+</article>
+
 {% if page.previous.url %}
-<div class="post-pre-link">
-  <a href="{{page.previous.url | prepend: site.baseurl }}">
-    <span>▼ Older Post  : {{page.previous.title}} [K/→]</span>
-  </a>   
-</div>
+  <section class="next">
+    <a class="next__link" href="{{page.previous.url | prepend: site.baseurl }}" style="background-image: url({{site.cdnlink}}/assets/img/howardzhao-overlay-05.png), url('{% if page.previous.image %}{{site.cdnlink}}{{ page.previous.image }}{% else %}{{site.cdnlink}}{{ site.defaultpostimg }}{% endif %}');background-repeat: repeat,no-repeat;background-size: auto,cover;">
+      <div class="next__container">
+        <span>Read Next</span>
+        <h2>{{page.previous.title}}</h2>
+      </div>
+    </a>
+  </section>
 {% endif %}
-<hr>
