@@ -1,7 +1,7 @@
 # coding=utf-8
 timezone: Asia/Shanghai
 # Site settings
-email: zhao@zhao.stream
+email: howard@howardzhao.com
 baseurl: ""
 paginate: 10
 paginate_path: "/pages/page-:num/"
